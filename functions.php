@@ -2,11 +2,22 @@
 
     function getPDO(){
         try{
-            return new PDO('mysql:host=10.5.2.118;dbname=bd_test;charset=utf8', "root", "root");
+            return new PDO('mysql:host=localhost;dbname=db_test;charset=utf8', "root", "root");
         }
         catch(Exception $err){
             die("Debug: problème de bdd\n" . $err);
         }
+    }
+
+    function logProspect($nom, $prenom, $tel, $adr){
+        $bdd = getPDO();
+        $request = $bdd -> prepare("INSERT INTO `prospect`(`prospect_nom`, `prospect_prenom`, `prospect_tel`, `prospect_adresse`)
+                                    VALUES (:nom, :prenom, :tel, :adr)");
+        $request -> bindparam(":nom", $nom);
+        $request -> bindparam(":prenom", $prenom);
+        $request -> bindparam(":tel", $tel);
+        $request -> bindparam(":adr", $adr);
+        $request -> execute();
     }
 
     function showHeader(){

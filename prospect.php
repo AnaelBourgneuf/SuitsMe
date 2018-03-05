@@ -1,14 +1,44 @@
-<?php include "functions.php"; 
+<?php
 
-if (isset($_POST["submit"])){
-    var_dump(htmlspecialchars($_POST["submit"]));
-}
+    include "functions.php"; 
+
+    if (isset($_POST["submit"])){
+        $err = "";
+        if(strlen(htmlspecialchars($_POST["telephone"])) !== 10){
+            $err = "Téléphone non valide";
+        } else if(strlen(htmlspecialchars($_POST["numeroVille"])) != 5){
+            $err = "Code postal non valide";
+        }
+        if($err != ""){
+            echo "<script>alert('" . $err . "')</script>";
+        } else{
+
+            $complement = htmlspecialchars($_POST["complementRue"]);
+            if(htmlspecialchars($_POST["complementRue"]) == ""){
+                $complement = "00";
+            }
+
+            $adresse =  htmlspecialchars($_POST["numeroRue"]) . "-" .
+                        htmlspecialchars($_POST["nomRue"]) . "-" .
+                        $complement . "-" .
+                        htmlspecialchars($_POST["numeroVille"]) . "-" .
+                        htmlspecialchars($_POST["nomVille"]);
+            logProspect(htmlspecialchars($_POST["nom"]),
+                        htmlspecialchars($_POST["prenom"]),
+                        htmlspecialchars($_POST["telephone"]),
+                        $adresse);
+
+
+
+
+
+
+
+
+
+        }
+    }
 ?>
-
-
-
-
-
 
 <!doctype html>
 <html lang="fr">
@@ -26,30 +56,39 @@ if (isset($_POST["submit"])){
 <body>
     <?php showHeader(); ?>
 
-    <form action="" method="post">
-        <div class="input-group mb-3">
+    <form action="prospect.php" method="post">
+        <div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Nom</span>
             </div>
-            <input type="text" class="form-control">
+            <input type="text" name="nom" class="form-control" placeholder="Nom" required>
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Prénom</span>
             </div>
-            <input type="text" class="form-control">
+            <input type="text" name="prenom" class="form-control" placeholder="Prénom" required>
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-2">
             <div class="input-group-prepend">
                 <span class="input-group-text" id="basic-addon1">Téléphone</span>
             </div>
-            <input type="text" class="form-control" placeholder="xx-xx-xx-xx-xx">
+            <input type="text" name="telephone" class="form-control" placeholder="063735..." required>
         </div>
-        <div class="input-group mb-3">
+        <div class="input-group mb-2">
             <div class="input-group-prepend">
-                <span class="input-group-text" id="basic-addon1">Adresse</span>
+                <span class="input-group-text">Adresse</span>
             </div>
-            <input type="text" class="form-control" placeholder="num-rue-cdex-ville">
+            <input type="text" name="numeroRue" class="form-control" placeholder="Numéro" required>
+            <input type="text" name="nomRue" class="form-control" placeholder="Rue" required>
+            <input type="text" name="complementRue" class="form-control" placeholder="Complement" required>
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text">Code postal</span>
+            </div>
+            <input type="text" name="numeroVille" class="form-control" placeholder="Code postal" required>
+            <input type="text" name="nomVille" class="form-control" placeholder="Ville" required>
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Valider</button>
     </form>
