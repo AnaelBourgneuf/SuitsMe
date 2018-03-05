@@ -12,11 +12,42 @@
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/gijgo@1.8.1/combined/js/gijgo.min.js" type="text/javascript"></script>
+    <link href="https://cdn.jsdelivr.net/npm/gijgo@1.8.1/combined/css/gijgo.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
     <?php
     showHeader("new");
     ?>
+
+    <form style="display: flex; flex-direction: column; align-items: center; margin-top: 3vh;">
+        <div class="form-group" style="display: flex; flex-direction: row; align-items: center;">
+            <label for="formGroupExampleInput" style="width: 5vw;">Nom : </label>
+            <input type="text" class="form-control" id="formGroupExampleInput" placeholder="Example input" required>
+        </div>
+        <label for="datetime" >Date et Heure :</label>
+        <div style="margin: 2vh 2vw; display: flex; flex-direction: row; align-content: space-around;" class="form-group" name="datetime">
+            <input id="datepicker" width="276" style="padding-right: 2vw" required/>
+            <script>
+                $('#datepicker').datepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+            </script>
+
+            <input id="timepicker" width="276" required/>
+            <script>
+                $('#timepicker').timepicker({
+                    uiLibrary: 'bootstrap4'
+                });
+            </script>
+        </div>
+        <div class="form-group" style="display: flex; flex-direction: column; align-items: center;">
+            <label for="Textarea">Détails :</label>
+            <textarea class="form-control" id="Textarea" rows="5" cols="50"></textarea>
+        </div>
+        <button type="submit" class="btn btn-outline-success">Valider</button>
+    </form>
 </body>
 </html>
