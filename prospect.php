@@ -54,7 +54,7 @@
 </head>
 
 <body>
-    <?php showHeader(); ?>
+    <?php showHeader("new"); ?>
 
     <form action="prospect.php" method="post">
         <div class="input-group mb-2">
