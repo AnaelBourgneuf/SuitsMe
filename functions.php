@@ -20,6 +20,22 @@
         $request -> execute();
     }
 
+    function writeDevis($patron, $matiere, $technique, $prodTime){
+        $bdd = getPDO();
+        $request = $bdd -> prepare("INSERT INTO `devis`(`devis_patron`, `devis_mat_oeuvre`, `devis_tech`, `devis_temp_prod`)
+                                    VALUES (:patron, :matiere, :technique, :prodTime)");
+        $request -> bindparam(":patron", $patron);
+        $request -> bindparam(":matiere", $matiere);
+        $request -> bindparam(":technique", $technique);
+        $request -> bindparam(":devis_temp_prod", $devis_temp_prod);
+        $request -> execute();
+    }
+
+    function getLog(){
+        $bdd = getPDO();
+        return $bdd -> query("SELECT * FROM `prospect`") -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
     function showHeader($name){
         echo '<header>
                 <nav class="navbar navbar-expand-lg navbar-light bg-light">

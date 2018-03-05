@@ -1,4 +1,12 @@
-<?php include "functions.php"; ?>
+<?php
+
+    include "functions.php";
+    
+    if (isset($_POST["submit"])){
+        
+    }
+
+?>
 
 
 <!doctype html>
@@ -18,5 +26,45 @@
     <?php
     showHeader("new");
     ?>
+    <form action="" method="post">
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <label class="input-group-text" for="inputGroupSelect01">Client</label>
+            </div>
+                <?php
+                    $logs = getLog();
+                    echo '<select class="custom-select" id="inputGroupSelect01">';
+                    foreach($logs as $log){
+                        echo "<option>" . $log["prospect_nom"] . "</option>";
+                    }
+                    echo '</select>';
+                ?>
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Patron</span>
+            </div>
+            <input type="file" name="patron" class="form-control" required>
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Matière d'oeuvre</span>
+            </div>
+            <input type="text" name="matiere" class="form-control" placeholder="Matière d'oeuvre" required>
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Technique</span>
+            </div>
+            <input type="text" name="technique" class="form-control" placeholder="Technique" required>
+        </div>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend">
+                <span class="input-group-text" id="basic-addon1">Temp de production</span>
+            </div>
+            <input type="text" name="prodTime" class="form-control" placeholder="En heure" required>
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary">Valider</button>
+    </form>
 </body>
 </html>
