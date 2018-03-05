@@ -16,7 +16,7 @@
 
 <body>
     <?php
-        showHeader();
+        showHeader("accueil");
         echo "      <br/><br/><div style='display: flex; flex-direction: column; align-items: center;'>
                     <a href='prospect.php'> <button type=\"button\" class=\"btn btn-primary\">Nouveau Prospect</button></a><br/>
                     <a href='RDV.php'> <button type=\"button\" class=\"btn btn-success\">Nouveau Rendez-vous</button></a><br/>
