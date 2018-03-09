@@ -4,6 +4,9 @@
     
     if (isset($_POST["submit"])){
         
+
+
+
     }
 
 ?>
@@ -35,7 +38,7 @@
                     $logs = getLog();
                     echo '<select class="custom-select" id="inputGroupSelect01">';
                     foreach($logs as $log){
-                        echo "<option>" . $log["prospect_nom"] . "</option>";
+                        echo "<option value=" . $log["prospect_ID"] . ">" . $log["prospect_nom"] . "</option>";
                     }
                     echo '</select>';
                 ?>

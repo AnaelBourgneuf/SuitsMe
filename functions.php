@@ -11,8 +11,8 @@
 
     function logProspect($nom, $prenom, $tel, $adr){
         $bdd = getPDO();
-        $request = $bdd -> prepare("INSERT INTO `prospect`(`prospect_nom`, `prospect_prenom`, `prospect_tel`, `prospect_adresse`)
-                                    VALUES (:nom, :prenom, :tel, :adr)");
+        $request = $bdd -> prepare("INSERT INTO `log`(`log_is_client`, `log_nom`, `log_prenom`, `log_tel`, `log_adresse`)
+                                    VALUES (0, :nom, :prenom, :tel, :adr)");
         $request -> bindparam(":nom", $nom);
         $request -> bindparam(":prenom", $prenom);
         $request -> bindparam(":tel", $tel);
@@ -31,9 +31,15 @@
         $request -> execute();
     }
 
-    function getLog(){
+    function getLogs($logType = null){
         $bdd = getPDO();
-        return $bdd -> query("SELECT * FROM `prospect`") -> fetchAll(PDO::FETCH_ASSOC);
+        if($logType != null){
+            $request = $bdd -> prepare("SELECT * FROM `log` WHERE `log_is_client` = :logType");
+            $request -> bindParam(":logType", $logType);
+            return $request -> execute() -> fetchAll(PDO::FETCH_ASSOC);
+        } else{
+            return $bdd -> query("SELECT * FROM `log`") -> fetchAll(PDO::FETCH_ASSOC);
+        }
     }
 
     function showHeader($name){
