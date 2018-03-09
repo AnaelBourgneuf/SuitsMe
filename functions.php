@@ -20,14 +20,15 @@
         $request -> execute();
     }
 
-    function writeDevis($patron, $matiere, $technique, $prodTime){
+    function writeDevis($patron, $matiere, $technique, $prodTime, $log){
         $bdd = getPDO();
-        $request = $bdd -> prepare("INSERT INTO `devis`(`devis_patron`, `devis_mat_oeuvre`, `devis_tech`, `devis_temp_prod`)
-                                    VALUES (:patron, :matiere, :technique, :prodTime)");
+        $request = $bdd -> prepare("INSERT INTO `devis`(`devis_patron`, `devis_mat_oeuvre`, `devis_tech`, `devis_temps_prod`, `log_ID`)
+                                    VALUES (:patron, :matiere, :technique, :devis_temp_prod, :log)");
         $request -> bindparam(":patron", $patron);
         $request -> bindparam(":matiere", $matiere);
         $request -> bindparam(":technique", $technique);
         $request -> bindparam(":devis_temp_prod", $devis_temp_prod);
+        $request -> bindparam(":log", $log);
         $request -> execute();
     }
 
