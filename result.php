@@ -31,13 +31,13 @@
         var_dump($_POST);
         $tab = [];
         if ($_POST["search"]=="Clients"){
-            //$tab = getLogs(1);
+            $tab = getLogs(1);
         }
         else if ($_POST["search"]=="Prospects"){
-            //$tab = getLogs(0);
+            $tab = getLogs(0);
         }
         else {
-            //$tab = getLogs();
+            $tab = getLogs();
         }
         ?>
         <table>
