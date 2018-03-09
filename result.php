@@ -49,7 +49,7 @@
                 <th>blaaa</th>
             </tr>
             <?php
-            for ($i = 0; $i < sizeof($tab) and $i < $nb; $i++){
+            for ($i = 0; $i < sizeof($tab); $i++){
                 echo "<tr>\n";
                 $ID = 0;
                 foreach ($tab[$i] as $key => $value){
