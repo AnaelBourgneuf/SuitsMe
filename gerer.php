@@ -46,6 +46,7 @@ include "functions.php";
         </div>
         <?php
             $parsed = explode("-", $infos["log_adresse"]);
+            var_dump($parsed);
         ?>
         <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -60,7 +61,7 @@ include "functions.php";
                 <span class="input-group-text">Code postal</span>
             </div>
             <input type="text" name="numeroVille" class="form-control" placeholder="Code postal" required value="<?php $parsed[3]?>">
-            <input type="text" name="nomVille" class="form-control" placeholder="Ville" required value="<?php $parsed[4]?>"
+            <input type="text" name="nomVille" class="form-control" placeholder="Ville" required value="<?php $parsed[4]?>">
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Valider</button>
     </form>
