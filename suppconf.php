@@ -1,4 +1,9 @@
 <?php
+function supprime ($ID){
+    $bdd = getPDO();
+    $bdd -> query("DELETE FROM 'log' WHERE 'log_ID' = ".$ID);
+}
+
 
 include "functions.php";
 ?>

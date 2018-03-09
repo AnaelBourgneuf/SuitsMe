@@ -12,6 +12,18 @@ include "functions.php";
         <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+        <style>
+            #container {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+            }
+
+            a {
+                margin: 5px;
+            }
+        </style>
     </head>
 
     <body>
@@ -24,6 +36,6 @@ include "functions.php";
         else {
             die( "Aucun log selectionné, retournez vers la <a href='recherche.php'>recherche</a>");
         }
-        echo "<h4>Voulez vous vraiment supprimer ".$infos['log_nom']." ".$infos['log_prenom']."</h4><br/>";
-        echo "<a href='gerer.php?ID=".$ID."'> <button type=\"button\" class=\"btn btn-dark\">Confirmer</button></a><a href='suppconf.php?ID=".$ID."'> <button type=\"button\" class=\"btn btn-danger\">Confirmer</button></a>";
+        echo "<div id='container'><h3>Voulez vous vraiment supprimer ".$infos['log_nom']." ".$infos['log_prenom']."</h3><br/>";
+        echo "<div><a href='gerer.php?ID=".$ID."'> <button type=\"button\" class=\"btn btn-dark\">Confirmer</button></a><a href='suppconf.php?ID=".$ID."'> <button type=\"button\" class=\"btn btn-danger\">Confirmer</button></a></div></div>";
         ?>
