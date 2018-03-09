@@ -28,8 +28,46 @@
         <?php
         showHeader("rechercher");
 
-
-        $tab = getLogs()
+        var_dump($_POST);
+        $tab = [];
+        if ($_POST["search"]=="Clients"){
+            //$tab = getLogs(1);
+        }
+        else if ($_POST["search"]=="Prospects"){
+            //$tab = getLogs(0);
+        }
+        else {
+            //$tab = getLogs();
+        }
         ?>
+        <table>
+            <tr>
+                <th>
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+                <th>
+                </th>
+            </tr>
+            <?php
+            for ($i = 0; $i < sizeof($tab) and $i < $nb; $i++){
+                echo "<tr>\n";
+                $ID = 0;
+                foreach ($tab[$i] as $key => $value){
+                    echo "<td>".$value."</td>";
+                    if ($key == "ID"){
+                        $ID = $value;
+                    }
+                }
+                echo "<td><a href='modif.php?ID=".$ID."'>modifier</a> </td>";
+                echo "<td><a href='supp.php?ID=".$ID."'>supprimer</a> </td>";
+                echo "</tr>";
+            }
+            ?>
+        </table>
     </body>
 </html>
