@@ -33,7 +33,6 @@
     }
 
     function getLogs($logType = null, $logSearch = null){
-        $bdd = getPDO();
         if($logType != null){
             /*if($logSearch != null){
                 $request = $bdd -> prepare("SELECT * FROM `log` WHERE `log_is_client` = :logType AND (  `log_nom` LIKE '%:logSearch%' OR
@@ -53,6 +52,20 @@
         } else{
             return $bdd -> query("SELECT * FROM `log`") -> fetchAll(PDO::FETCH_ASSOC);
         }
+    }
+
+    function getLogByID($logID){
+        $bdd = getPDO();
+        $request =  $bdd -> prepare("SELECT * FROM `log` WHERE log_ID = :logID");
+        $request -> bindParam(":logId", $logID);
+        return $request -> execute() -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function valideDevis($logID){
+        $bdd = getPDO();
+        $request =  $bdd -> prepare("UPDATE `devis` SET `devis_valide`= 1 WHERE log_ID = :logID");
+        $request -> bindParam(":logId", $logID);
+        $request -> execute();
     }
 
     function showHeader($name){
