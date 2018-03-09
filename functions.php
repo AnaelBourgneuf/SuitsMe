@@ -33,6 +33,8 @@
     }
 
     function getLogs($logType = null, $logSearch = null){
+        var_dump("pd");
+        $bdd = getPDO();
         if($logType != null){
             /*if($logSearch != null){
                 $request = $bdd -> prepare("SELECT * FROM `log` WHERE `log_is_client` = :logType AND (  `log_nom` LIKE '%:logSearch%' OR
