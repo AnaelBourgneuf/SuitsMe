@@ -71,7 +71,7 @@
             </div>
             <input type="text" name="prodTime" class="form-control" placeholder="En heure" required>
         </div>
-        <button type="submit" name="submit" class="btn btn-primary">Valider</button>
+        <button type="submit" name="submit" class="btn btn-warning">Valider</button>
     </form>
 </body>
 </html>
