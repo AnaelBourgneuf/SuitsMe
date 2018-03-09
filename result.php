@@ -42,20 +42,30 @@
         ?>
         <table>
             <tr>
-                <th>blabla</th>
-                <th>blabla</th>
-                <th>blablabla</th>
-                <th>bla</th>
-                <th>blaaa</th>
+                <th>Client/Prospect</th>
+                <th>Prenom</th>
+                <th>Nom</th>
+                <th>Adresse</th>
+                <th>Telephone</th>
             </tr>
             <?php
             for ($i = 0; $i < sizeof($tab); $i++){
                 echo "<tr>\n";
                 $ID = 0;
                 foreach ($tab[$i] as $key => $value){
-                    echo "<td>".$value."</td>";
-                    if ($key == "ID"){
+                    if ($key == "log_ID"){
                         $ID = $value;
+                    }
+                    else if ($key == "log_is_client"){
+                        if ($value == 0){
+                            echo "<td>Prospect</td>";
+                        }
+                        else {
+                            echo "<td>Client</td>";
+                        }
+                    }
+                    else {
+                        echo "<td>".$value."</td>";
                     }
                 }
                 echo "<td><a href='modif.php?ID=".$ID."'>modifier</a> </td>";
