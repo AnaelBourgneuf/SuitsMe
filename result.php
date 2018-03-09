@@ -42,16 +42,11 @@
         ?>
         <table>
             <tr>
-                <th>
-                </th>
-                <th>
-                </th>
-                <th>
-                </th>
-                <th>
-                </th>
-                <th>
-                </th>
+                <th>blabla</th>
+                <th>blabla</th>
+                <th>blablabla</th>
+                <th>bla</th>
+                <th>blaaa</th>
             </tr>
             <?php
             for ($i = 0; $i < sizeof($tab) and $i < $nb; $i++){
