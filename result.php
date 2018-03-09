@@ -21,6 +21,15 @@
             {
                 font-size: 2em;
             }
+
+            td, th {
+                border: 2px solid black;
+                padding: 0px 10px;
+            }
+
+            table {
+                border-collapse: collapse;
+            }
         </style>
     </head>
 
@@ -30,23 +39,27 @@
 
         var_dump($_POST);
         $tab = [];
+        $logSearch = $_POST["logSearch"];
+        if ($logSearch == ""){
+            $logSearch = null;
+        }
         if ($_POST["search"]=="Clients"){
-            $tab = getLogs(1);
+            $tab = getLogs(1,$logSearch);
         }
         else if ($_POST["search"]=="Prospects"){
-            $tab = getLogs(0);
+            $tab = getLogs(0,$logSearch);
         }
         else {
-            $tab = getLogs();
+            $tab = getLogs(null,$logSearch);
         }
         ?>
         <table>
             <tr>
-                <th>Client/Prospect</th>
+                <th style="border-radius: 2px 0px 0px 0px;">Client/Prospect</th>
                 <th>Prenom</th>
                 <th>Nom</th>
                 <th>Adresse</th>
-                <th>Telephone</th>
+                <th style="border-radius: 0px 0px 2px 0px;">Telephone</th>
             </tr>
             <?php
             for ($i = 0; $i < sizeof($tab); $i++){

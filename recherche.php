@@ -41,7 +41,7 @@
                     <input class="form-check-input position-static" type="radio" name="search" id="Tous" value="Tous" aria-label="Tous" checked><label for="Tous"> Tous</label>
                 </div>
                 <div style="display: flex; flex-direction: column; align-items: center;">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" name="nom" style="margin: 2vh;" >
+                    <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search" name="logSearch" style="margin: 2vh;" >
                     <button class="btn btn-secondary my-2 my-sm-0" type="submit">Rechercher</button>
                 </div>
             </form>
