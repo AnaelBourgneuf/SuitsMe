@@ -37,7 +37,7 @@
         <?php
         showHeader("rechercher");
 
-        var_dump($_POST);
+        //var_dump($_POST);
         $tab = [];
         $logSearch = $_POST["logSearch"];
         if ($logSearch == ""){
@@ -81,7 +81,7 @@
                         echo "<td>".$value."</td>";
                     }
                 }
-                echo "<td><a href='modif.php?ID=".$ID."'>modifier</a> </td>";
+                echo "<td><a href='gerer.php?ID=".$ID."'>gérer</a> </td>";
                 echo "<td><a href='supp.php?ID=".$ID."'>supprimer</a> </td>";
                 echo "</tr>";
             }
