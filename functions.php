@@ -32,11 +32,23 @@
         $request -> execute();
     }
 
-    function getLogs($logType = null){
+    function getLogs($logType = null, $logSearch = null){
         $bdd = getPDO();
         if($logType != null){
-            $request = $bdd -> prepare("SELECT * FROM `log` WHERE `log_is_client` = :logType");
-            $request -> bindParam(":logType", $logType);
+            /*if($logSearch != null){
+                $request = $bdd -> prepare("SELECT * FROM `log` WHERE `log_is_client` = :logType AND (  `log_nom` LIKE '%:logSearch%' OR
+                                                                                                        `log_prenom` LIKE '%:logSearch%' OR
+                                                                                                        `log_adresse` LIKE '%:logSearch%' OR
+                                                                                                        `log_tel` LIKE '%:logSearch%'");
+                $request -> bindParam(":logType", $logType);
+                $request -> bindParam(":logSearch", $logSearch);
+                $request -> bindParam(":logSearch", $logSearch);
+                $request -> bindParam(":logSearch", $logSearch);
+                $request -> bindParam(":logSearch", $logSearch);
+            } else{*/
+                $request = $bdd -> prepare("SELECT * FROM `log` WHERE `log_is_client` = :logType");
+                $request -> bindParam(":logType", $logType);    
+            //}
             return $request -> execute() -> fetchAll(PDO::FETCH_ASSOC);
         } else{
             return $bdd -> query("SELECT * FROM `log`") -> fetchAll(PDO::FETCH_ASSOC);
