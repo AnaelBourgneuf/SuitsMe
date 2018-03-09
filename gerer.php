@@ -1,6 +1,11 @@
 <?php
 
 include "functions.php";
+
+    if(isset($_GET["valid"])){
+        valideDevis($_GET["valid"]);
+    }
+
 ?>
 
 <!doctype html>
@@ -46,7 +51,6 @@ include "functions.php";
         </div>
         <?php
             $parsed = explode("-", $infos["log_adresse"]);
-            var_dump($parsed);
         ?>
         <div class="input-group mb-2">
             <div class="input-group-prepend">
@@ -65,5 +69,18 @@ include "functions.php";
         </div>
         <button type="submit" name="submit" class="btn btn-primary">Valider</button>
     </form>
+
+    <div>
+        <table> 
+        <?php
+            $devis = getDevis($_GET["ID"]);
+
+            foreach($devis as $devis){
+                echo "<tr><td>" . $devis["devis_date"] . "</td><td><a href='gerer.php?ID=" . $_GET["ID"] . "&valid=true'>Valider</a></td></tr>";
+            }
+        ?>
+        </table>
+    
+    </div>
     </body>
 </html>

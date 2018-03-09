@@ -32,25 +32,15 @@
         $request -> execute();
     }
 
-    function getLogs($logType = null, $logSearch = null){
-        var_dump("pd");
+    function getDevis($logID){
+        $bdd = getPDO();
+        return $bdd -> query("SELECT * FROM `devis` WHERE log_ID =" . $logID) -> fetchAll(PDO::FETCH_ASSOC);
+    }
+
+    function getLogs($logType){
         $bdd = getPDO();
         if($logType != null){
-            /*if($logSearch != null){
-                $request = $bdd -> prepare("SELECT * FROM `log` WHERE `log_is_client` = :logType AND (  `log_nom` LIKE '%:logSearch%' OR
-                                                                                                        `log_prenom` LIKE '%:logSearch%' OR
-                                                                                                        `log_adresse` LIKE '%:logSearch%' OR
-                                                                                                        `log_tel` LIKE '%:logSearch%'");
-                $request -> bindParam(":logType", $logType);
-                $request -> bindParam(":logSearch", $logSearch);
-                $request -> bindParam(":logSearch", $logSearch);
-                $request -> bindParam(":logSearch", $logSearch);
-                $request -> bindParam(":logSearch", $logSearch);
-            } else{*/
-                $request = $bdd -> prepare("SELECT * FROM `log` WHERE `log_is_client` = :logType");
-                $request -> bindParam(":logType", $logType);    
-            //}
-            return $request -> execute() -> fetchAll(PDO::FETCH_ASSOC);
+            return $bdd -> query("SELECT * FROM `log` WHERE `log_is_client` =" . $logType ) -> fetchAll(PDO::FETCH_ASSOC);
         } else{
             return $bdd -> query("SELECT * FROM `log`") -> fetchAll(PDO::FETCH_ASSOC);
         }
@@ -58,16 +48,13 @@
 
     function getLogByID($logID){
         $bdd = getPDO();
-        $request =  $bdd -> prepare("SELECT * FROM `log` WHERE log_ID = :logID");
-        $request -> bindParam(":logId", $logID);
-        return $request -> execute() -> fetchAll(PDO::FETCH_ASSOC);
+        return $bdd -> query("SELECT * FROM `log` WHERE log_ID =" . $logID) -> fetchAll(PDO::FETCH_ASSOC);
     }
 
     function valideDevis($logID){
         $bdd = getPDO();
-        $request =  $bdd -> prepare("UPDATE `devis` SET `devis_valide`= 1 WHERE log_ID = :logID");
-        $request -> bindParam(":logId", $logID);
-        $request -> execute();
+        $bdd -> query("UPDATE `devis` SET `devis_valide`= 1 WHERE log_ID =" . $logID);
+        $bdd -> query("UPDATE `log` SET `log_is_client`= 1 WHERE log_ID =" . $logID);
     }
 
     function showHeader($name){
