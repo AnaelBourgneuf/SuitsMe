@@ -18,7 +18,7 @@ include "functions.php";
     <?php
         showHeader("rechercher");
         if (isset($_GET["ID"])) {
-            $infos = getLogById($_GET["ID"]);
+            $infos = getLogById($_GET["ID"])[0];
         }
         else {
             die( "Aucun log selectionné, retournez vers la <a href='recherche.php'>recherche</a>");
@@ -45,7 +45,7 @@ include "functions.php";
             <input type="text" name="telephone" class="form-control" placeholder="063735..." required value="<?php echo $infos["log_tel"]?>">
         </div>
         <?php
-            $parsed = explode("-", $infos["adresse"]);
+            $parsed = explode("-", $infos["log_adresse"]);
         ?>
         <div class="input-group mb-2">
             <div class="input-group-prepend">
